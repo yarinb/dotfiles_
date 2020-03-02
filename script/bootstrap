@@ -98,12 +98,12 @@ find_zsh() {
 setup_gitconfig
 install_dotfiles
 
-info "installing dependencies"
-if ./bin/dot_update; then
-	success "dependencies installed"
-else
-	fail "error installing dependencies"
-fi
+# info "installing dependencies"
+# if ./bin/dot_update; then
+# 	success "dependencies installed"
+# else
+# 	fail "error installing dependencies"
+# fi
 
 echo ''
 echo '  All installed!'
