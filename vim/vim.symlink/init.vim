@@ -10,27 +10,36 @@ let g:myvim.is_vim8 = exists('*job_start')
 let g:myvim.is_gui = has('gui_running')
 let g:myvim.is_tmux = !empty($TMUX)
 
+" Set main configuration directory as parent directory
+let $VIM_PATH =
+	\   exists('*stdpath') ? stdpath('config') :
+	\   ! empty($MYVIMRC) ? fnamemodify(expand($MYVIMRC), ':h') :
+	\   ! empty($VIMCONFIG) ? expand($VIMCONFIG) :
+	\   ! empty($VIM_PATH) ? expand($VIM_PATH) :
+	\   fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
+
+
 " Set data/cache directory as $XDG_CACHE_HOME/vim
 let $DATA_PATH =
 	\ expand(($XDG_CACHE_HOME ? $XDG_CACHE_HOME : '~/.cache') . '/vim')
 
 if has('vim_starting')
-    " Search and use environments specifically made for Neovim.
-		if has('nvim') && isdirectory($DATA_PATH . '/venv/neovim2')
-			let g:python_host_prog = $DATA_PATH . '/venv/neovim2/bin/python'
-		endif
+  " Search and use environments specifically made for Neovim.
+  if has('nvim') && isdirectory($DATA_PATH . '/venv/neovim2')
+    let g:python_host_prog = $DATA_PATH . '/venv/neovim2/bin/python'
+  endif
 
-		if has('nvim') && isdirectory($DATA_PATH . '/venv/neovim3')
-			let g:python3_host_prog = $DATA_PATH . '/venv/neovim3/bin/python'
-		endif
+  if has('nvim') && isdirectory($DATA_PATH . '/venv/neovim3')
+    let g:python3_host_prog = $DATA_PATH . '/venv/neovim3/bin/python'
+  endif
 
-		if ! has('nvim') && has('pythonx')
-			if has('python3')
-				set pyxversion=3
-			elseif has('python')
-				set pyxversion=2
-			endif
-		endif
+  if ! has('nvim') && has('pythonx')
+    if has('python3')
+      set pyxversion=3
+    elseif has('python')
+      set pyxversion=2
+    endif
+  endif
 endif
 
 call core#check_vim_plug()
@@ -138,9 +147,6 @@ set fileformats+=mac
 set nobackup nowritebackup noswapfile
 
 set ttimeout
-
-set spell
-set spelllang=en
 
 set undofile undoreload=10000
 

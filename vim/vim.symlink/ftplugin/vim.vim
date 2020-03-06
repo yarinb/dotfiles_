@@ -15,5 +15,6 @@ call textobj#user#plugin('vim', {
 setlocal iskeyword+=:
 
 augroup user:autocmd
-      autocmd! BufWritePost $MYVIMRC call user#reloadvimrc()
+      autocmd! BufWritePost $VIM_PATH/{*.vim,*.yaml,vimrc} nested
+		\ source $MYVIMRC | redraw
 augroup END

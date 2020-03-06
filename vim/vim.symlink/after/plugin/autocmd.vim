@@ -36,4 +36,4 @@ aug user:autocmd
 
   au BufReadPost,BufNewFile,FileWritePost * call buffer#reset_synmaxcol()
 
-aug ENDr
+aug END

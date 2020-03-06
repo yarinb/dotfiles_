@@ -37,6 +37,12 @@ nnoremap v<c-]> :execute 'vert stag ' . expand('<cword>')<cr>
 
 nnoremap Q <nop>
 
+" Toggle editor's visual effects
+nmap <Leader>ts :setlocal spell!<cr>
+nmap <Leader>tn :setlocal nonumber!<CR>
+nmap <Leader>tl :setlocal nolist!<CR>
+nmap <silent> <Leader>th :nohlsearch<CR>
+
 " Indent all file
 "nnoremap <leader>ff :call preserve#preserve('silent normal gg=G')<cr>
 

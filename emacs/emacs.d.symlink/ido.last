@@ -1,0 +1,28 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/yarinb/.emacs.d/" . "lisp/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/yarinb/.emacs.d/lisp/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "init-appearance.el"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/yarinb/.emacs.d/lisp/" (24153 26430 886116 976000) "init-imenu.el" "init-python-mode.el" "init-org.el" "#init-ivy.el#" "init-help.el" "init-git.el" "init-dired.el" "init-markdown-mode.el" "init-projectile.el" "init-treemacs.el" "init-javascript.el" "init-benchmarking.el" "init-package.el" "init-local.el~" "init-appearance.el" "init-tramp.el" "init-rainbow-delimiters.el" "init-editing.el" "init-custom.el" "init-windows.el" "#init-appearance.el#" "init-grep.el" "init-funcs.el" "init-completion.el" "init-server.el" "init-ivy.el" "init-yaml-mode.el" "init-sessions.el" "init-flycheck.el" "init-ibuffer.el" "init-const.el" "init-go-mode.el" "init-flyspell.el" "init-lisp.el" "init-mac.el" "init-sane-defaults.el" "init-fonts.el" "../" "./")
+
+ ("/Users/yarinb/.emacs.d/" (24153 26645 407466 457000) "#init.el#" "backups/" ".cache/" ".git/" "elpa/" "recentf" "history" "alerts.csv" ".gitignore" "README.md" "init.el" "auto-save-list/" "amx-items" "projectile.cache" "recentf~" ".ackignore" "projectile-bookmarks.eld" "places" "Makefile" "eshell/" "smex-items" "lisp/" "../" "./")
+
+ ("/Users/yarinb/" (24153 26432 238413 850000) "vayoprod_20200204.dump" ".viminfo" "vayoprod_20200224.dump" ".gitconfig" ".aws/" ".cache/" ".known_hosts.lock" ".circleci/" ".python_history" "Downloads/" ".rediscli_history" ".psqlrc" ".psql_history-localhost-postgres" ".oh-my-zsh/" "namogoo_sf_20200204.dump" "play/" ".vscode/" ".pyenv/" "Documents/" ".npm/" ".zcompdump" ".jupyter/" "Splice/" ".Trash/" ".psql_history-namogoo-dwh.c75t2c0iayd7.us-west-2.rds.amazonaws.com-namogoo" "Dropbox/" ".profile" "Applications/" "Movies/" ".ssh/" ".rustup/" "metricdb_20200216.dump" "metricdb_20200129.dump" "Vayo_Production_Postgresql-2020_01_15_23_37_39-dump.tar" "rendition-rendition.mp4" "alerts.csv" ".fzf-history/" ".dropbox/" ".fzf.bash" "Public/" ".fzf.zsh" "metricdb_20200128.dump" "vayoprod_20200203.dump" "emacsd/" ".cargo/" ".elfeed/" "accounts_only.dump" ".emacs.d/" "postgres_localhost-2020_01_23_12_19_59-dump.dump" "vayoprod_20200128_2.dump" ".zcompdump-Yarin’s MacBook Pro-5.7.1" "..psqlrc.un~" ".psql_history-localhost-vayo" ".doom.d/" "doom/" ".lesshst" ".matplotlib/" "Library/" "Desktop/" ".ipython/" ".zsh_history" ".asdf/" "vayoprod_20200129.dump" "vayoprod_20200216.dump" "Postman/" ".tool-versions" ".zprofile" "Pictures/" ".psql_history" ".local/" "metricdb_20200130.dump" "..zshrc.un~" ".zshrc" ".bashrc" ".subversion/" ".CFUserTextEncoding" ".yarnrc" "vayoprod_20200226.dump" ".DS_Store" "go/" ".vim/" ".pythonhist" ".docker/" "Music/" ".config/" "proj/" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
