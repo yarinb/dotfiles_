@@ -11,7 +11,7 @@
 (use-package which-key
   :ensure t
   :diminish
-  :hook (after-init . which-key-mode)
+  :hook ((after-init . which-key-mode))
   :config
   (which-key-mode)
   ;; Allow C-h to trigger which-key before it is done automatically

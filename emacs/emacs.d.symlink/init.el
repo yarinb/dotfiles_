@@ -3,7 +3,7 @@
   (error "This requires Emacs 25.1 and above!"))
 
 ;; Speed up startup
-(defvar my-gc-cons-threshold (if (display-graphic-p) 8000000 800000)
+(defvar my-gc-cons-threshold (if (display-graphic-p) 100000000 1000000)
   "The default value to use for `gc-cons-threshold'. If you experience freezing,
 decrease this. If you experience stuttering, increase this.")
 
@@ -75,13 +75,12 @@ decrease this. If you experience stuttering, increase this.")
 (require 'init-ibuffer)
 (require 'init-git)
 
-
-;(require 'init-completion)
-;(require 'init-flycheck)
+(require 'init-completion)
+(require 'init-flycheck)
 ;(require 'init-flyspell)
 ;(require 'init-tramp)
 (require 'init-treemacs)
-;; (require 'init-org)
+(require 'init-org)
 
 ;; Not sure I need those
 (require 'init-rainbow-delimiters)

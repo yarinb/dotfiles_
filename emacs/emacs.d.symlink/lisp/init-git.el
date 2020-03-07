@@ -54,13 +54,13 @@
 
 (use-package diff-hl
   :ensure t
-  ;; :defer t
-  ;; :init (setq diff-hl-draw-borders nil)
+  :defer t
+  :init (setq diff-hl-draw-borders nil)
   :config
   ;; Highlight on-the-fly
-  ;; (diff-hl-flydiff-mode 1)
+  (diff-hl-flydiff-mode 1)
   ;; set fringe style
-  ;; (setq fringes-outside-margins t)
+  (setq fringes-outside-margins t)
   ;; Integration with magit
   (with-eval-after-load 'magit
     (add-hook 'magit-post-refresh-hook #'diff-hl-magit-post-refresh))

@@ -3,7 +3,6 @@
   :diminish projectile-mode
 
   :init
-
   ;; switching project opens the top-level directory
   (setq projectile-switch-project-action 'projectile-dired)
 
@@ -23,6 +22,7 @@
 
   :config
   (add-to-list 'projectile-globally-ignored-directories "node_modules")
+  (add-to-list 'projectile-globally-ignored-directories "elpa")
   ;; enable projectile mode in all buffers
   (projectile-global-mode 1)
   (use-package counsel-projectile
