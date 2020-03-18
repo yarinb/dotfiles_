@@ -32,7 +32,7 @@
   (add-to-list 'company-begin-commands 'outshine-self-insert-command))
 
 
-(defun fate-lsp-setup-python ()
+(defun my-lsp-setup-python ()
   "Microsoft Python Language Server does not have a syntax checker, setup one for it."
   (progn
     (require 'lsp-python-ms)
@@ -45,9 +45,8 @@
   :ensure t
   :defer t
   :hook
-  (((python-mode . fate-lsp-setup-python)
-    ;; (js-mode. fate-lsp-setup-js)
-    (sh-mode html-mode web-mode json-mode
+  (((python-mode . my-lsp-setup-python)
+    (sh-mode html-mode web-mode js-mode json-mode
      css-mode less-mode sass-mode scss-mode
      js2-mode typescript-mode) . lsp)
    (lsp-mode . lsp-enable-which-key-integration))
@@ -64,7 +63,7 @@
   :after lsp-mode
   :hook (lsp-mode . lsp-ui-mode)
   :init
-  (setq 
+  (setq
         lsp-ui-doc-enable t
         lsp-ui-doc-header t
         lsp-ui-doc-include-signature t

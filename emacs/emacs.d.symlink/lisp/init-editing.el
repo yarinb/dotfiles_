@@ -1,4 +1,4 @@
-;; Word wrap in text 
+;; Word wrap in text
 (add-hook 'text-mode-hook 'global-visual-line-mode)
 
 ;; use zap-up-to-char instead of zap-to-char
@@ -14,7 +14,25 @@
   (add-hook 'prog-mode-hook 'subword-mode))
 
 ;; Automatically insert matching braces and quotes
-(electric-pair-mode 1)
+;; (electric-pair-mode 1)
+(use-package smartparens
+  :ensure t
+  :hook
+  ((prog-mode . smartparens-mode))
+  :config
+  (sp-pair "{" nil
+           :post-handlers '(("||\n[i]" "RET") ("| " " "))
+           :unless '(sp-point-before-word-p sp-point-before-same-p)
+           :wrap "C-{")
+  (sp-pair "(" nil
+           :post-handlers '(("||\n[i]" "RET") ("| " " "))
+           :unless '(sp-point-before-word-p sp-point-before-same-p)
+           :wrap "C-(")
+  (sp-pair "[" nil
+           :post-handlers '(("| " " "))
+           :unless '(sp-point-before-word-p sp-point-before-same-p))
+  (sp-pair "\"" nil :unless '(sp-point-before-word-p sp-point-after-word-p sp-point-before-same-p))
+  (sp-pair "'" nil :unless '(sp-point-before-word-p sp-point-after-word-p sp-point-before-same-p)))
 
 ;; Expand region with C-=
 ;; Contract region with C-- C-= (ctrl-minus key)

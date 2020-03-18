@@ -1,15 +1,5 @@
-(require 'cl)
+(require 'cl-lib)
 (require 'package)
-
-;; Refresh package list on Emacs start if we are online.
-(defun online? ()
-  (if (and (functionp 'network-interface-list)
-           (network-interface-list))
-      (some (lambda (iface) (unless (equal "lo" (car iface))
-                         (member 'up (first (last (network-interface-info
-                                                   (car iface)))))))
-            (network-interface-list))
-    t))
 
 ;; Emacs comes with a package manager for installing more features.
 ;; The default package repository doesn't contain much, so we tell it
@@ -26,8 +16,7 @@
 ;; If we're online, we attempt to fetch the package directories if
 ;; we don't have a local copy already. This lets us start installing
 ;; packages right away from a clean install.
-(when (online?)
-  (unless package-archive-contents (package-refresh-contents)))
+(unless package-archive-contents (package-refresh-contents))
 
 ;; `Paradox' is an enhanced interface for package management, which also
 ;; provides some helpful utility functions we're going to be using

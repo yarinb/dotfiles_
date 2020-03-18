@@ -87,8 +87,8 @@ decrease this. If you experience stuttering, increase this.")
 
 ;; Language support
 (require 'init-lisp)
-;(require 'init-javascript)
-;(require 'init-yaml-mode)
+(require 'init-javascript)
+(require 'init-yaml-mode)
 ;(require 'init-markdown-mode)
 ;(require 'init-go-mode)
 (require 'init-python-mode)
