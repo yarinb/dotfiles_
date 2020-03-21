@@ -1,0 +1,1 @@
+au FocusGained,WinEnter,BufEnter,FileChangedShellPost * checktime | SignifyRefresh

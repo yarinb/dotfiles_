@@ -13,6 +13,7 @@ call textobj#user#plugin('vim', {
       \ })
 
 setlocal iskeyword+=:
+setlocal foldmethod=marker keywordprg=:help
 
 augroup user:autocmd
       autocmd! BufWritePost $VIM_PATH/{*.vim,*.yaml,vimrc} nested
