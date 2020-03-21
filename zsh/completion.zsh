@@ -1,4 +1,6 @@
 #!/bin/zsh
+
+WORDCHARS=''
 # forces zsh to realize new commands
 zstyle ':completion:*' completer _oldlist _expand _complete _match _ignored _approximate
 
