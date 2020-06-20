@@ -3,6 +3,28 @@ set runtimepath^=/usr/local/opt/fzf
 runtime plugin/fzf.vim
 
 let $FZF_DEFAULT_OPTS='--layout=reverse'
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' --prune -o -path 'build/**' prune -o  -type f -print -o -type l -print 2> /dev/null"
+
+" The Silver Searcher
+if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+  set grepprg=ag\ --nogroup\ --nocolor
+  command! -bang -nargs=* Grep
+      \ call fzf#vim#ag(
+      \   <q-args>,
+      \   <bang>0 ?
+      \     fzf#vim#with_preview('up:60%') :
+      \     fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0
+      \ )
+endif
+
+" ripgrep
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+endif
 
 let g:fzf_history_dir = '~/.fzf-history'
 " [Buffers] Jump to the existing window if possible
@@ -19,14 +41,6 @@ if has('nvim')
 end
 
 command! FZFMru call fzf#run(fzf#wrap('MRU', { 'source':  MRUfiles() }))
-command! -bang -nargs=* Grep
-      \ call fzf#vim#ag(
-      \   <q-args>,
-      \   <bang>0 ?
-      \     fzf#vim#with_preview('up:60%') :
-      \     fzf#vim#with_preview('right:50%:hidden', '?'),
-      \   <bang>0
-      \ )
 
 nnoremap <silent> <leader>ff :Files<cr>
 nnoremap <silent> <leader>fb :Buffers<cr>
@@ -88,4 +102,5 @@ function! FloatingFZF()
         \ nonumber
         \ norelativenumber
         \ signcolumn=no
+        \ winhl=Normal:Floating
 endfunction

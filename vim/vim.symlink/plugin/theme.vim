@@ -1,19 +1,19 @@
 syntax sync minlines=512
 
 set background=dark
-set termguicolors
 set lazyredraw
 set regexpengine=2
 set cursorline
-" set colorcolumn=120s
+set termguicolors
+set colorcolumn=120
 set synmaxcol=200
 
-colorscheme gruvbox
+if !has('gui_running')
+  let g:jellybeans_overrides = {
+        \    'SpecialKey': { '256ctermfg': '243'}
+        \}
 
-
-hi! SLModeNormal gui=bold guifg=#CCCCCC guibg=#343D46
-hi! SLModeCommand gui=bold guifg=#CCCCCC guibg=#6699CC
-hi! SLModeInsert gui=bold guifg=#595959 guibg=#BADB51
-hi! SLModeVisual gui=bold guifg=#CCCCCC guibg=#CD9CCE
-hi! SLModeTerminal gui=bold guifg=#595959 guibg=#CCCCCC
-hi! SLUnsavedFile gui=bold guifg=#CCCCCC guibg=#CC4A21
+  let g:solarized_termcolors=256
+endif
+let g:jellybeans_use_gui_italics = 0
+colorscheme jellybeans

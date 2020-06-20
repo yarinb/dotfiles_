@@ -89,7 +89,8 @@ if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     call dein#add('morhetz/gruvbox')
-    call dein#add('chriskempson/base16-vim')
+    call dein#add('nanotech/jellybeans.vim')
+    call dein#add('altercation/vim-colors-solarized')
 
     call dein#add('kana/vim-textobj-user')
 
@@ -99,6 +100,10 @@ if dein#load_state(s:dein_dir)
 
     " Fuzzy finder
     " denite here?
+    call dein#add('junegunn/fzf.vim')
+
+    " Gutentags - tags creation
+    call dein#add('ludovicchabant/vim-gutentags')
 
     " Git
     call dein#add('tpope/vim-commentary')
@@ -116,12 +121,17 @@ if dein#load_state(s:dein_dir)
       call dein#add('roxma/vim-hug-neovim-rpc')
     endif
 
+    call dein#add('google/vim-maktaba', {'merged': 0})
+    call dein#add('google/vim-codefmt', {'merged': 0})
+    call dein#add('pangloss/vim-javascript')
+    call dein#add('maxmellon/vim-jsx-pretty')
+    call dein#add('styled-components/vim-styled-components', {'rev': 'main'})
 
-    " Lazy loaded plugins here
-    call dein#add('Shougo/denite.nvim')
     call dein#end()
     call dein#save_state()
 endif
+
+call maktaba#plugin#Detect()
 
 if !has('nvim')
   unlet! g:skip_defaults_vim
@@ -166,9 +176,11 @@ set fileencoding=utf8 nobomb
 set showmatch showmode
 set confirm
 set clipboard+=unnamed      " use the clipboards of vim and win
-set shortmess=actToOFI
+set shortmess=actToOF
 set splitright splitbelow
-set diffopt+=vertical
+if &diff
+  set diffopt+=vertical
+endif
 set number numberwidth=3
 set ignorecase smartcase
 set nocursorline
@@ -178,7 +190,7 @@ set virtualedit=block
 set hidden
 set signcolumn=yes
 set infercase
-set tags=tags,tags.gems
+set tags=tags
 set tagcase=followscs
 
 set wildignorecase
@@ -210,9 +222,9 @@ set undofile undoreload=10000
 set title
 let &titlestring="%{substitute(expand('%:p'), $HOME, '$HOME', '')}"
 
-set statusline=
 set showtabline=2
-set tabline=%!tabline#update()
+set statusline=
+set statusline+=%<%.99f\ %y%h%w%m%r%=%-14.(%l,%c%V%)\ %P
 
 set mouse=a
 
@@ -223,7 +235,7 @@ let &grepformat='%f:%l:%c:%m,%f:%l:%m'
 let &grepprg='ag --follow --smart-case --vimgrep --skip-vcs-ignores --hidden --nocolor'
 
 filetype plugin indent on
-syntax enable
+syntax on
 
 " Command to reverse selected lines
 command! -bar -range=% Reverse <line1>,<line2>g/^/m<line1>-1|nohl
@@ -252,11 +264,13 @@ command! -range=% RemoveComments silent call text#remove_comments(<line1>, <line
 " Use <c-l> to clear the highlighting of :set hlsearch.
 nnoremap <c-l> :nohlsearch<cr><c-l>
 
-" Faster window switching
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+" Faster window switching - if not using tmux
+if g:myvim.is_tmux
+  nnoremap <C-h> <C-w>h
+  nnoremap <C-j> <C-w>j
+  nnoremap <C-k> <C-w>k
+  nnoremap <C-l> <C-w>l
+endif
 
 " Delete current buffer
 nnoremap <leader>bd :call buffer#kill()<cr>
@@ -273,14 +287,6 @@ vnoremap g! :<c-u>call text#highlight('\<'.text#get_visual().'\>')<cr>
 nnoremap g! :call text#highlight('\<'.expand('<cword>').'\>')<cr>
 vnoremap <leader>! :<c-u>call text#highlight_sensitive_visual()<cr>
 nnoremap <leader>! :call text#highlight_sensitive(expand('<cword>'))<cr>
-
-" Tags
-nnoremap g<c-]> :execute 'Tag ' . expand('<cword>')<cr>
-vnoremap g<c-]> :<c-u>execute 'Tag ' . text#get_visual()<cr>
-nnoremap <c-]> :execute 'tag ' . expand('<cword>')<cr>
-nnoremap t<c-]> :execute 'tab tag ' . expand('<cword>')<cr>
-nnoremap <c-w><c-]> :execute 'stag ' . expand('<cword>')<cr>
-nnoremap v<c-]> :execute 'vert stag ' . expand('<cword>')<cr>
 
 nnoremap Q <nop>
 

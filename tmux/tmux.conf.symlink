@@ -16,7 +16,7 @@ set -g mode-keys vi
 set -g status-keys emacs
 # -- display -------------------------------------------------------------------
 
-set -g default-terminal "screen-256color"
+set -g default-terminal "xterm-256color"
 set -g base-index 1         # start windows numbering at 1
 setw -g pane-base-index 1   # make pane numbering consistent with windows
 
@@ -87,6 +87,11 @@ bind -n C-Right resize-pane -R 10
 bind -n C-Down resize-pane -D 5
 bind -n C-Up resize-pane -U 5
 
+# Clear history
+bind C-l send-keys 'C-l'
+
+bind -n C-k send-keys -R \; clear-history
+
 # window navigation
 unbind n
 unbind p
@@ -102,40 +107,24 @@ bind Tab last-window        # move to last active window
 set -g status-right ''
 set -g status-right-length 0
 
+set -g status-left '#[bg=colour236,fg=colour246][#[fg=colour231]#S#[fg=colour246]] #[default]'
+set -g status-left-length 50
 
-# default statusbar colors
-set-option -g status-style "fg=#bdae93,bg=#3c3836"
+set-window-option -g window-status-format " #I:#{?window_flags,#{window_flags},}#W "
+#set-window-option -g window-status-current-format '[#I #W]'
+set-window-option -g window-status-current-style "fg=colour235,bg=green"
 
-# default window title colors
-set-window-option -g window-status-style "fg=#bdae93,bg=default"
-
-# active window title colors
-set-window-option -g window-status-current-style "fg=#fabd2f,bg=default"
+# set color for status bar
+set-option -g status-bg colour235
+set-option -g status-fg colour253
+# set-option -g status-style dim
 
 # pane border
-set-option -g pane-border-style "fg=#3c3836"
-set-option -g pane-active-border-style "fg=#504945"
-
-# message text
-set-option -g message-style "fg=#d5c4a1,bg=#3c3836"
-
-# pane number display
-set-option -g display-panes-active-colour "#b8bb26"
-set-option -g display-panes-colour "#fabd2f"
+set-option -g pane-border-style "fg=colour238,bg=default"
+set-option -g pane-active-border-style "fg=colour2,bg=default"
 
 # clock
 set-window-option -g clock-mode-colour "#b8bb26"
-
-# copy mode highligh
-set-window-option -g mode-style "fg=#bdae93,bg=#504945"
-
-# bell
-set-window-option -g window-status-bell-style "fg=#3c3836,bg=#fb4934"
-
-
-
-
-
 
 
 

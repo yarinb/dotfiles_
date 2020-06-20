@@ -17,6 +17,7 @@
 ;; (electric-pair-mode 1)
 (use-package smartparens
   :ensure t
+  :diminish
   :hook
   ((prog-mode . smartparens-mode))
   :config
